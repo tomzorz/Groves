@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using Groves.Linq;
 using Groves.Reflection;
 
 namespace Groves.FakeMarkupExtensions.BuiltIn

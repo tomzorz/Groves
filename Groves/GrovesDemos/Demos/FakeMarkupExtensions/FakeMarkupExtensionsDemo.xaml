@@ -10,6 +10,8 @@
         <StackPanel Orientation="Vertical">
             <TextBlock Text="x:Static replacement" FontSize="22" />
             <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestProperty}" FontSize="18" />
+            <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestField}" FontSize="18" />
+            <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestMethod}" FontSize="18" />
             <TextBlock Text="Alternator" FontSize="22" />
             <ItemsControl x:Name="AlternatorDemoItemsControl">
                 <ItemsControl.ItemTemplate>

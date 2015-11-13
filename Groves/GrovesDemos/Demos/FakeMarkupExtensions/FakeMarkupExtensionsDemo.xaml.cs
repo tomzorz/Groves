@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Windows.ApplicationModel;
 using Windows.UI.Xaml.Controls;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using Windows.UI.Xaml.Resources;
+using Groves.FakeMarkupExtensions;
+using Groves.FakeMarkupExtensions.BuiltIn;
 
 namespace GrovesDemos.Demos.FakeMarkupExtensions
 {
@@ -18,7 +20,7 @@ namespace GrovesDemos.Demos.FakeMarkupExtensions
 
 		private void FakeMarkupExtensionsDemo_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
 		{
-			var list = new List<string> {"a", "b", "c", "d", "e", "f", "g", "h"};
+			var list = new List<string> { "a", "b", "c", "d", "e", "f", "g", "h" };
 			AlternatorDemoItemsControl.ItemsSource = list;
 		}
 	}
