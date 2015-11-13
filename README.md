@@ -23,6 +23,7 @@ Abusing CustomResource for fun and profit:
 * x:Static (POC done);
 * alternator (POC done);
 * x:Null (POC done);
+* Debug info (POC done);
 * *and so much more...*
 
 More on this in the wiki (as it's a bit complicated).

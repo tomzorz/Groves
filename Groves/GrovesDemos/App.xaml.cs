@@ -35,9 +35,9 @@ namespace GrovesDemos
             this.Suspending += OnSuspending;
 
 	        CustomXamlResourceLoader.Current = new FakeMarkupExtensionCustomResource(
-				new AlternatorFakeMarkupExtensionProvider(),
-				new NullFakeMarkupExtensionProvider(),
-				new StaticFakeMarkupExtensionProvider());
+		        new AlternatorFakeMarkupExtensionProvider(),
+		        new NullFakeMarkupExtensionProvider(),
+		        new StaticFakeMarkupExtensionProvider(), new DebugFakeMarkupExtensionProvider());
         }
 
         /// <summary>

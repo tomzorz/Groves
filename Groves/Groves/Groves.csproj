@@ -115,6 +115,7 @@
     <Compile Include="Collections\VectorChangedEventArgs.cs" />
     <Compile Include="DesignTime\CollectionHelpers.cs" />
     <Compile Include="FakeMarkupExtensions\BuiltIn\AlternatorFakeMarkupExtensionProvider.cs" />
+    <Compile Include="FakeMarkupExtensions\BuiltIn\DebugFakeMarkupExtensionProvider.cs" />
     <Compile Include="FakeMarkupExtensions\BuiltIn\NullFakeMarkupExtensionProvider.cs" />
     <Compile Include="FakeMarkupExtensions\BuiltIn\StaticFakeMarkupExtensionProvider.cs" />
     <Compile Include="FakeMarkupExtensions\CustomResourceRequestInfo.cs" />
