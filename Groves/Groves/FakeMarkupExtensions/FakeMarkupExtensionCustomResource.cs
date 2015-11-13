@@ -18,16 +18,40 @@ namespace Groves.FakeMarkupExtensions
 		custom binding, multibinding? (add datacontextproxy for that)
 		*/
 
+		private readonly Dictionary<string, IFakeMarkupExtensionProvider> _providers;
+
+		private readonly Dictionary<string, Func<object>> _cache;
+
 		public FakeMarkupExtensionCustomResource(params IFakeMarkupExtensionProvider[] fmeps)
 		{
-
+			_providers = new Dictionary<string, IFakeMarkupExtensionProvider>();
+			foreach (var fakeMarkupExtensionProvider in fmeps)
+			{
+				_providers.Add(fakeMarkupExtensionProvider.ProviderId, fakeMarkupExtensionProvider);
+			}
+			_cache = new Dictionary<string, Func<object>>();
 		}
 
 		protected override object GetResource(string resourceId, string objectType, string propertyName, string propertyType)
 		{
-			//todo
-
-			return null;
+			var crri = new CustomResourceRequestInfo(resourceId, objectType, propertyName, propertyType);
+			// -- try getting result from cache
+			Func<object> fo;
+			if (_cache.TryGetValue(resourceId, out fo))
+			{
+				return fo.Invoke();
+			}
+			// -- nopity nope
+			var tokens = resourceId.Split('$').Select(x => x.Trim()).ToArray();
+			// get provider
+			IFakeMarkupExtensionProvider provider;
+			if (!_providers.TryGetValue(tokens[0], out provider)) throw new FakeMarkupExtensionException($"No provider found with id {tokens[0]}");
+			// get
+			var paramTokens = tokens.Skip(1).Select(x => new FakeMarkupExtensionToken(x)).ToArray();
+			var resultFunc = provider.GetResult(crri, paramTokens);
+			// return result
+			if (provider.IsCacheable) _cache[resourceId] = resultFunc;
+			return resultFunc.Invoke();
 		}
 	}
 }

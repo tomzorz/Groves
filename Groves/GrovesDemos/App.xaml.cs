@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Resources;
+using Groves.FakeMarkupExtensions;
+using Groves.FakeMarkupExtensions.BuiltIn;
 
 namespace GrovesDemos
 {
@@ -30,6 +33,11 @@ namespace GrovesDemos
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+	        CustomXamlResourceLoader.Current = new FakeMarkupExtensionCustomResource(
+				new AlternatorFakeMarkupExtensionProvider(),
+				new NullFakeMarkupExtensionProvider(),
+				new StaticFakeMarkupExtensionProvider());
         }
 
         /// <summary>

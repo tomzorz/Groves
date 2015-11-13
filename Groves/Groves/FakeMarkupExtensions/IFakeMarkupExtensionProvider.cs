@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Groves.FakeMarkupExtensions
 {
 	public interface IFakeMarkupExtensionProvider
 	{
+		string ProviderId { get; }
+
+		bool IsCacheable { get; }
+
+		Func<object> GetResult(CustomResourceRequestInfo crri, params FakeMarkupExtensionToken[] args);
 	}
 }

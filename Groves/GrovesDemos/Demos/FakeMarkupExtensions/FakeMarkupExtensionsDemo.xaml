@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="GrovesDemos.Demos.FakeMarkupExtensions.FakeMarkupExtensionsDemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GrovesDemos.Demos"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="x:Static replacement" FontSize="22" />
+            <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestProperty}" FontSize="18" />
+            <TextBlock Text="Alternator" FontSize="22" />
+            <ItemsControl x:Name="AlternatorDemoItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="5" Margin="5" Background="{CustomResource Alternate $(brush:Red) $(brush:#00ff00) $(brush:#ff0000ff)}">
+                            <TextBlock Text="{Binding }" />
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</Page>
