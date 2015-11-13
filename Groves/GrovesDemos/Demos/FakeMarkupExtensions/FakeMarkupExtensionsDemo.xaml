@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Margin="20">
             <TextBlock Text="x:Static replacement" FontSize="22" />
             <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestProperty}" FontSize="18" />
             <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestField}" FontSize="18" />
