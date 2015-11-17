@@ -6,29 +6,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical" Margin="20">
-            <TextBlock Text="x:Static replacement" FontSize="22" TextWrapping="WrapWholeWords" />
-            <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestProperty}" FontSize="18" />
-            <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestField}" FontSize="18" />
-            <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestMethod}" FontSize="18" />
-            <TextBlock Text="Alternator" FontSize="22" TextWrapping="WrapWholeWords" />
-            <ItemsControl x:Name="AlternatorDemoItemsControl">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border Padding="5" Margin="5" Background="{CustomResource Alternate $(brush:Red) $(brush:#00ff00) $(brush:#ff0000ff)}">
-                            <TextBlock Text="{Binding }" />
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            <TextBlock Text="Is in debug mode?" FontSize="22" TextWrapping="WrapWholeWords" />
-            <TextBlock Foreground="Green" Text="{CustomResource Debug $IsInDebugMode}" FontSize="18" />
-            <TextBlock Text="The yellow rectangle below should only be visible in debug mode." FontSize="22" TextWrapping="WrapWholeWords" />
-            <Rectangle Width="150" Height="30" Fill="Yellow" HorizontalAlignment="Left" Visibility="{CustomResource Debug $IsInDebugMode}" />
-            <TextBlock Text="The blue rectangle below should only be visible in release mode." FontSize="22" TextWrapping="WrapWholeWords" />
-            <Rectangle Width="150" Height="30" Fill="Blue" HorizontalAlignment="Left" Visibility="{CustomResource Debug $!IsInDebugMode}" />
-            <TextBlock Text="Is the debugger attached?" FontSize="22" TextWrapping="WrapWholeWords" />
-            <TextBlock Foreground="Green" Text="{CustomResource Debug $IsDebuggerAttached}" FontSize="18" />
-        </StackPanel>
+        <ScrollViewer HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" ZoomMode="Disabled">
+            <StackPanel Orientation="Vertical" Margin="20">
+                <TextBlock Text="x:Static replacement" FontSize="22" TextWrapping="WrapWholeWords" />
+                <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestProperty}" FontSize="18" />
+                <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestField}" FontSize="18" />
+                <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestMethod}" FontSize="18" />
+                <TextBlock Text="Alternator" FontSize="22" TextWrapping="WrapWholeWords" />
+                <ItemsControl x:Name="AlternatorDemoItemsControl">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="5" Margin="5" Background="{CustomResource Alternate $(brush:Red) $(brush:#00ff00) $(brush:#ff0000ff)}">
+                                <TextBlock Text="{Binding }" />
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <TextBlock Text="Is in debug mode?" FontSize="22" TextWrapping="WrapWholeWords" />
+                <TextBlock Foreground="Green" Text="{CustomResource Debug $IsInDebugMode}" FontSize="18" />
+                <TextBlock Text="The yellow rectangle below should only be visible in debug mode." FontSize="22" TextWrapping="WrapWholeWords" />
+                <Rectangle Width="150" Height="30" Fill="Yellow" HorizontalAlignment="Left" Visibility="{CustomResource Debug $IsInDebugMode}" />
+                <TextBlock Text="The blue rectangle below should only be visible in release mode." FontSize="22" TextWrapping="WrapWholeWords" />
+                <Rectangle Width="150" Height="30" Fill="Blue" HorizontalAlignment="Left" Visibility="{CustomResource Debug $!IsInDebugMode}" />
+                <TextBlock Text="Is the debugger attached?" FontSize="22" TextWrapping="WrapWholeWords" />
+                <TextBlock Foreground="Green" Text="{CustomResource Debug $IsDebuggerAttached}" FontSize="18" />
+                <TextBlock Text="Resource loading" FontSize="22" TextWrapping="WrapWholeWords" />
+                <TextBlock Foreground="Green" Text="{CustomResource ResourceLoader $TestResource}" FontSize="18" />
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
