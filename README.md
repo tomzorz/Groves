@@ -32,7 +32,7 @@ Abusing CustomResource for fun and profit:
 * Debug info (POC done);
 * *and so much more...*
 
-More on this in the wiki (as it's a bit complicated).
+More on this in the wiki: https://github.com/tomzorz/Groves/wiki/FakeMarkupExtension-syntax
 
 ### Reflection
 
