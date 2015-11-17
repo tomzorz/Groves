@@ -8,11 +8,13 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled" ZoomMode="Disabled">
             <StackPanel Orientation="Vertical" Margin="20">
+                <TextBlock Text="Static" FontWeight="Bold" FontSize="20" Margin="10" TextWrapping="WrapWholeWords" />
                 <TextBlock Text="x:Static replacement" FontSize="22" TextWrapping="WrapWholeWords" />
                 <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestProperty}" FontSize="18" />
                 <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestField}" FontSize="18" />
                 <TextBlock Foreground="Green" Text="{CustomResource Static $GrovesDemos.Demos.FakeMarkupExtensions.TestStaticClass $GrovesDemos $1.0.0.0 $neutral $null $TestMethod}" FontSize="18" />
-                <TextBlock Text="Alternator" FontSize="22" TextWrapping="WrapWholeWords" />
+                <TextBlock Text="Alternate" FontWeight="Bold" FontSize="20" Margin="10" TextWrapping="WrapWholeWords" />
+                <TextBlock Text="Alternating backgrounds" FontSize="22" TextWrapping="WrapWholeWords" />
                 <ItemsControl x:Name="AlternatorDemoItemsControl">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -22,6 +24,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+                <TextBlock Text="Debug" FontWeight="Bold" FontSize="20" Margin="10" TextWrapping="WrapWholeWords" />
                 <TextBlock Text="Is in debug mode?" FontSize="22" TextWrapping="WrapWholeWords" />
                 <TextBlock Foreground="Green" Text="{CustomResource Debug $IsInDebugMode}" FontSize="18" />
                 <TextBlock Text="The yellow rectangle below should only be visible in debug mode." FontSize="22" TextWrapping="WrapWholeWords" />
@@ -30,7 +33,8 @@
                 <Rectangle Width="150" Height="30" Fill="Blue" HorizontalAlignment="Left" Visibility="{CustomResource Debug $!IsInDebugMode}" />
                 <TextBlock Text="Is the debugger attached?" FontSize="22" TextWrapping="WrapWholeWords" />
                 <TextBlock Foreground="Green" Text="{CustomResource Debug $IsDebuggerAttached}" FontSize="18" />
-                <TextBlock Text="Resource loading" FontSize="22" TextWrapping="WrapWholeWords" />
+                <TextBlock Text="ResourceLoader" FontWeight="Bold" FontSize="20" Margin="10" TextWrapping="WrapWholeWords" />
+                <TextBlock Text="Resource loading from the same assembly" FontSize="22" TextWrapping="WrapWholeWords" />
                 <TextBlock Foreground="Green" Text="{CustomResource ResourceLoader $TestResource}" FontSize="18" />
             </StackPanel>
         </ScrollViewer>
