@@ -52,12 +52,12 @@ namespace Groves.FakeMarkupExtensions
 								Value = Visibility.Collapsed;
 								break;
 							default:
-								throw new Exception("Invalid value for Visibility token.");
+								throw new FakeMarkupExtensionException("Invalid value for Visibility token.");
 
 						}
 						break;
 					default:
-						throw new ArgumentException($"Could not find matching constant token type for value {s}", nameof(s));
+						throw new FakeMarkupExtensionException($"Could not find matching constant token type for value {s}");
 				}
 			}
 			else
