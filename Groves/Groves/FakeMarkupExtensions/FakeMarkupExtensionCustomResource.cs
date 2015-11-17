@@ -33,9 +33,10 @@ namespace Groves.FakeMarkupExtensions
 		protected override object GetResource(string resourceId, string objectType, string propertyName, string propertyType)
 		{
 			var crri = new CustomResourceRequestInfo(resourceId, objectType, propertyName, propertyType);
+			var cacheKey = resourceId + "&" + propertyType;
 			// -- try getting result from cache
 			Func<object> fo;
-			if (_cache.TryGetValue(resourceId, out fo))
+			if (_cache.TryGetValue(cacheKey, out fo))
 			{
 				return fo.Invoke();
 			}
@@ -48,7 +49,7 @@ namespace Groves.FakeMarkupExtensions
 			var paramTokens = tokens.Skip(1).Select(x => new FakeMarkupExtensionToken(x)).ToArray();
 			var resultFunc = provider.GetResult(crri, paramTokens);
 			// return result
-			if (provider.IsCacheable) _cache[resourceId] = resultFunc;
+			if (provider.IsCacheable) _cache[cacheKey] = resultFunc;
 			return resultFunc.Invoke();
 		}
 	}

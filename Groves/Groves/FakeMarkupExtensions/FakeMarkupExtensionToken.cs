@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 using Groves.UI;
 
@@ -39,6 +40,21 @@ namespace Groves.FakeMarkupExtensions
 					case "brush":
 						ValueType = typeof(SolidColorBrush);
 						Value = new SolidColorBrush(source.Contains("#") ? ColorHelpers.FromHex(source) : ColorHelpers.FromName(source));
+						break;
+					case "visibility":
+						ValueType = typeof(Visibility);
+						switch (source)
+						{
+							case "Visible":
+								Value = Visibility.Visible;
+								break;
+							case "Collapsed":
+								Value = Visibility.Collapsed;
+								break;
+							default:
+								throw new Exception("Invalid value for Visibility token.");
+
+						}
 						break;
 					default:
 						throw new ArgumentException($"Could not find matching constant token type for value {s}", nameof(s));
