@@ -128,6 +128,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\MemberInfoHelpers.cs" />
     <Compile Include="UI\ColorHelpers.cs" />
+    <Compile Include="UI\PropertyPathHelpers.cs" />
+    <Compile Include="UI\VisualStateHelpers.cs" />
     <Content Include="Properties\Groves.rd.xml" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

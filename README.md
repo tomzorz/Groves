@@ -41,6 +41,8 @@ More on this in the wiki: https://github.com/tomzorz/Groves/wiki/FakeMarkupExten
 ### UI
 
 * ColorHelpers
+* PropertyPathHelpers
+* VisualStateHelpers
 
 ### Linq
 
