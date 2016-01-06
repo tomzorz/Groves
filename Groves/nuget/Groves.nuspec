@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Groves</id>
+    <version>$version$</version>
+    <title>Groves for Windows UWP</title>
+    <authors>Tamás Deme 'tomzorz'</authors>
+    <owners>Tamás Deme 'tomzorz'</owners>
+    <licenseUrl>https://github.com/tomzorz/Groves/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/tomzorz/Groves</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/tomzorz/Groves/master/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Groves is an open source library for UWP apps containing all sorts of interesting and unique things.</description>
+    <summary>Contains: await anything, advanced collection view source, designtime fillup, fake markup extensions and a bunch of helpers.</summary>
+    <releaseNotes>$releaseNotes$</releaseNotes>
+    <language>en-US</language>
+    <tags>uwp uap xaml markupextensions fake collectionviewsource</tags>
+    <dependencies>
+      <group targetFramework="uap10.0">
+        <dependency id="System.Collections" version="4.0.10" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.10" />
+        <dependency id="System.Linq" version="4.0.0" />
+        <dependency id="System.Linq.Expressions" version="4.0.10" />
+        <dependency id="System.ObjectModel" version="4.0.10" />
+        <dependency id="System.Reflection" version="4.0.10" />
+        <dependency id="System.Reflection.Extensions" version="4.0.0" />
+        <dependency id="System.Runtime" version="4.0.20" />
+        <dependency id="System.Runtime.Extensions" version="4.0.10" />
+        <dependency id="System.Runtime.InteropServices.WindowsRuntime" version="4.0.0" />
+        <dependency id="System.Runtime.WindowsRuntime" version="4.0.10" />
+        <dependency id="System.Threading" version="4.0.10" />
+        <dependency id="System.Threading.Tasks" version="4.0.10" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Groves\bin\Release\Groves.*" target="lib\uap10.0\" exclude="**\*.pdb" />
+  </files>
+</package>
