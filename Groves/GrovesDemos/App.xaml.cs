@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -34,11 +35,16 @@ namespace GrovesDemos
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-	        CustomXamlResourceLoader.Current = new FakeMarkupExtensionCustomResource(
+	        var iidm = false;
+#if DEBUG
+	        iidm = true;
+#endif
+
+			CustomXamlResourceLoader.Current = new FakeMarkupExtensionCustomResource(
 		        new AlternatorFakeMarkupExtensionProvider(),
 		        new NullFakeMarkupExtensionProvider(),
 		        new StaticFakeMarkupExtensionProvider(),
-				new DebugFakeMarkupExtensionProvider(),
+				new DebugFakeMarkupExtensionProvider(iidm, Debugger.IsAttached),
 				new ResourceLoaderFakeMarkupExtensionProvider());
         }
 

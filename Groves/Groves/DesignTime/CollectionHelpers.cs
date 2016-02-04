@@ -11,6 +11,9 @@ using Windows.UI.Xaml.Media;
 
 namespace Groves.DesignTime
 {
+	/// <summary>
+	/// Collection helpers
+	/// </summary>
 	public static class CollectionHelpers
 	{
 		private static Random _rnd = new Random();

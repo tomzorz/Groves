@@ -5,6 +5,9 @@ using Windows.UI.Xaml.Resources;
 
 namespace Groves.FakeMarkupExtensions
 {
+	/// <summary>
+	/// Fake markup extension implementation
+	/// </summary>
 	public class FakeMarkupExtensionCustomResource : CustomXamlResourceLoader
 	{
 		//todo scenairos:
@@ -20,6 +23,10 @@ namespace Groves.FakeMarkupExtensions
 
 		private readonly Dictionary<string, Func<object>> _cache;
 
+		/// <summary>
+		/// Construct an instance of the FME
+		/// </summary>
+		/// <param name="fmeps">list of the providers to use</param>
 		public FakeMarkupExtensionCustomResource(params IFakeMarkupExtensionProvider[] fmeps)
 		{
 			_providers = new Dictionary<string, IFakeMarkupExtensionProvider>();
@@ -30,6 +37,15 @@ namespace Groves.FakeMarkupExtensions
 			_cache = new Dictionary<string, Func<object>>();
 		}
 
+		/// <summary>
+		/// Get a resource by the {CustomResource ...} markup extension
+		/// </summary>
+		/// <param name="resourceId">if of the resource</param>
+		/// <param name="objectType">expected type of the result</param>
+		/// <param name="propertyName">name of the property where the value is assigned</param>
+		/// <param name="propertyType">type of the property where the value is assigned</param>
+		/// <returns>value</returns>
+		/// <exception cref="FakeMarkupExtensionException">Something went wrong while grabbing the value.</exception>
 		protected override object GetResource(string resourceId, string objectType, string propertyName, string propertyType)
 		{
 			var crri = new CustomResourceRequestInfo(resourceId, objectType, propertyName, propertyType);

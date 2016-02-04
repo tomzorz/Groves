@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Groves.Linq
 {
+	/// <summary>
+	/// Transform helpers
+	/// </summary>
 	public static class TransformHelpers
 	{
 		/// <summary>
@@ -21,16 +24,14 @@ namespace Groves.Linq
 			}
 		}
 
-		//todo fix up docs based on this https://msdn.microsoft.com/library/bb548891%28v=vs.100%29.aspx
-
 		/// <summary>
 		/// Projects each element of a sequence into a new form until an exception is thrown.
 		/// </summary>
 		/// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
 		/// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
-		/// <param name="source"></param>
-		/// <param name="selector"></param>
-		/// <returns></returns>
+		/// <param name="source">A sequence of values to invoke a transform function on.</param>
+		/// <param name="selector">A transform function to apply to each element.</param>
+		/// <returns>An IEnumerable of T whose elements are the result of invoking the transform function on each element of source.</returns>
 		public static IEnumerable<TResult> SelectUntilException<TSource, TResult>(this IEnumerable<TSource> source,
 			Func<TSource, TResult> selector)
 		{
@@ -52,6 +53,15 @@ namespace Groves.Linq
 			}
 		}
 
+		/// <summary>
+		/// Projects each element of a sequence into a new form, when this is unsuccessful it returns a fallback value as projection result
+		/// </summary>
+		/// <param name="source">A sequence of values to invoke a transform function on.</param>
+		/// <param name="selector">A transform function to apply to each element.</param>
+		/// <param name="fallback">A fallback item to use when the projection fails.</param>
+		/// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+		/// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
+		/// <returns>An IEnumerable of T whose elements are the result of invoking the transform function on each element of source.</returns>
 		public static IEnumerable<TResult> SelectWithFallback<TSource, TResult>(this IEnumerable<TSource> source,
 			Func<TSource, TResult> selector, TResult fallback)
 		{

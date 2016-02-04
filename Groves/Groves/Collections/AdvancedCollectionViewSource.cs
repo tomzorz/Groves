@@ -234,16 +234,35 @@ namespace Groves.Collections
 			_sourceList.Insert(index, item);
 		}
 
+		/// <summary>
+		/// Removes the <see cref="T:System.Collections.Generic.IList`1"/> item at the specified index.
+		/// </summary>
+		/// <param name="index">The zero-based index of the item to remove.</param><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.</exception><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
 		public void RemoveAt(int index) => Remove(_view[index]);
 
+		/// <summary>
+		/// Gets or sets the element at the specified index.
+		/// </summary>
+		/// <returns>
+		/// The element at the specified index.
+		/// </returns>
+		/// <param name="index">The zero-based index of the element to get or set.</param><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.</exception><exception cref="T:System.NotSupportedException">The property is set and the <see cref="T:System.Collections.Generic.IList`1"/> is read-only.</exception>
 		public object this[int index]
 		{
 			get { return _view[index]; }
 			set { _view[index] = value; }
 		}
 
+		/// <summary>
+		/// Occurs when the vector changes.
+		/// </summary>
 		public event VectorChangedEventHandler<object> VectorChanged;
 
+		/// <summary>
+		/// Move current index to item
+		/// </summary>
+		/// <param name="item">item</param>
+		/// <returns>success of operation</returns>
 		public bool MoveCurrentTo(object item) => item == CurrentItem || MoveCurrentToIndex(IndexOf(item));
 
 		private bool MoveCurrentToIndex(int i)
@@ -258,43 +277,100 @@ namespace Groves.Collections
 			return true;
 		}
 
+		/// <summary>
+		/// Moves selected item to position
+		/// </summary>
+		/// <param name="index">index</param>
+		/// <returns>success of operation</returns>
 		public bool MoveCurrentToPosition(int index) => MoveCurrentToIndex(index);
 
+		/// <summary>
+		/// Move current item to first item
+		/// </summary>
+		/// <returns>success of operation</returns>
 		public bool MoveCurrentToFirst() => MoveCurrentToIndex(0);
 
+		/// <summary>
+		/// Move current item to last item
+		/// </summary>
+		/// <returns>success of operation</returns>
 		public bool MoveCurrentToLast() => MoveCurrentToIndex(_view.Count - 1);
 
+		/// <summary>
+		/// Move current item to next item
+		/// </summary>
+		/// <returns>success of operation</returns>
 		public bool MoveCurrentToNext() => MoveCurrentToIndex(_index + 1);
 
+		/// <summary>
+		/// Move current item to previous item
+		/// </summary>
+		/// <returns>success of operation</returns>
 		public bool MoveCurrentToPrevious() => MoveCurrentToIndex(_index - 1);
 
+		/// <summary>
+		/// Load more items from the source
+		/// </summary>
+		/// <param name="count">number of items to load</param>
+		/// <returns>Async operation of LoadMoreItemsResult</returns>
+		/// <exception cref="NotImplementedException">Not implemented yet...</exception>
 		public IAsyncOperation<LoadMoreItemsResult> LoadMoreItemsAsync(uint count)
 		{
 			throw new NotImplementedException("todo...");
 		}
 
+		/// <summary>
+		/// Groups in collection
+		/// </summary>
 		public IObservableVector<object> CollectionGroups => null; //todo
 
+		/// <summary>
+		/// Current item
+		/// </summary>
 		public object CurrentItem
 		{
 			get { return _index > -1 && _index < _view.Count ? _view[_index] : null; }
 			set { MoveCurrentTo(value); }
 		}
 
+		/// <summary>
+		/// Position of current item
+		/// </summary>
 		public int CurrentPosition => _index;
 
+		/// <summary>
+		/// True of source has more items
+		/// </summary>
 		public bool HasMoreItems => false; //todo
 
+		/// <summary>
+		/// True of the current item is after the last visible item
+		/// </summary>
 		public bool IsCurrentAfterLast => _index >= _view.Count;
 
+		/// <summary>
+		/// True of the current item is before the first visible item
+		/// </summary>
 		public bool IsCurrentBeforeFirst => _index < 0;
 
+		/// <summary>
+		/// Current item changed event handler
+		/// </summary>
 		public event EventHandler<object> CurrentChanged;
 
+		/// <summary>
+		/// Current item changing event handler
+		/// </summary>
 		public event CurrentChangingEventHandler CurrentChanging;
 
+		/// <summary>
+		/// Indicates whether this CollectionView can filter its items
+		/// </summary>
 		public bool CanFilter => true;
 
+		/// <summary>
+		/// Predicate used to filter the visisble items
+		/// </summary>
 		public Predicate<object> Filter
 		{
 			get { return _filter; }
@@ -306,24 +382,47 @@ namespace Groves.Collections
 			}
 		}
 
+		/// <summary>
+		/// Indicates whether this CollectionView can sort its items
+		/// </summary>
 		public bool CanSort => true;
 
+		/// <summary>
+		/// SortDescriptions to sort the visible items
+		/// </summary>
 		public IList<SortDescription> SortDescriptions => _sortDescriptions;
 
+		/// <summary>
+		/// Indicates whether this CollectionView can group its items
+		/// </summary>
 		public bool CanGroup => false; //todo
 
+		/// <summary>
+		/// GroupDescriptions to group the visible items
+		/// </summary>
 		public IList<object> GroupDescriptions => null; //todo
 
+		/// <summary>
+		/// Returns the source collection
+		/// </summary>
 		public IEnumerable SourceCollection => _source;
 
 		#region Events
 
+		/// <summary>
+		/// Currently selected item changing event
+		/// </summary>
+		/// <param name="e">event args</param>
 		protected virtual void OnCurrentChanging(CurrentChangingEventArgs e)
 		{
 			if (_deferCounter > 0) return;
 			CurrentChanging?.Invoke(this, e);
 		}
 
+		/// <summary>
+		/// Currently selected item changed event
+		/// </summary>
+		/// <param name="e">event args</param>
 		protected virtual void OnCurrentChanged(object e)
 		{
 			if (_deferCounter > 0) return;
@@ -332,6 +431,10 @@ namespace Groves.Collections
 			OnPropertyChanged(nameof(CurrentItem));
 		}
 
+		/// <summary>
+		/// Vector changed event
+		/// </summary>
+		/// <param name="e">event args</param>
 		protected virtual void OnVectorChanged(IVectorChangedEventArgs e)
 		{
 			if (_deferCounter > 0) return;
@@ -386,6 +489,10 @@ namespace Groves.Collections
 
 		#region Defer refresh
 
+		/// <summary>
+		/// Stops refreshing until it is disposed
+		/// </summary>
+		/// <returns>An disposable object</returns>
 		public IDisposable DeferRefresh()
 		{
 			return new NotificationDeferrer(this);
@@ -399,6 +506,10 @@ namespace Groves.Collections
 			private readonly AdvancedCollectionViewSource _acvs;
 			private readonly object _currentItem;
 
+			/// <summary>
+			/// Create a notification deferrer
+			/// </summary>
+			/// <param name="acvs">Source ACVS</param>
 			public NotificationDeferrer(AdvancedCollectionViewSource acvs)
 			{
 				_acvs = acvs;
@@ -406,6 +517,10 @@ namespace Groves.Collections
 				_acvs._deferCounter++;
 			}
 
+			/// <summary>
+			/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+			/// </summary>
+			/// <filterpriority>2</filterpriority>
 			public void Dispose()
 			{
 				_acvs.MoveCurrentTo(_currentItem);
@@ -418,8 +533,15 @@ namespace Groves.Collections
 
 		#region INotifyPropertyChanged
 
+		/// <summary>
+		/// Occurs when a property value changes.
+		/// </summary>
 		public event PropertyChangedEventHandler PropertyChanged;
 
+		/// <summary>
+		/// Property changed event invoker
+		/// </summary>
+		/// <param name="propertyName">name of the property that changed</param>
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

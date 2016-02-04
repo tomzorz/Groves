@@ -5,8 +5,16 @@ using Groves.UI;
 
 namespace Groves.FakeMarkupExtensions
 {
+	/// <summary>
+	/// Fake markup extension token code representation
+	/// </summary>
 	public class FakeMarkupExtensionToken
 	{
+		/// <summary>
+		/// Construct a token from a source string
+		/// </summary>
+		/// <param name="s">source</param>
+		/// <exception cref="FakeMarkupExtensionException">Failed to create value from token source.</exception>
 		public FakeMarkupExtensionToken(string s)
 		{
 			Source = s;
@@ -67,10 +75,19 @@ namespace Groves.FakeMarkupExtensions
 			}
 		}
 
+		/// <summary>
+		/// Value of token
+		/// </summary>
 		public object Value { get; set; }
 
+		/// <summary>
+		/// Original source string of token
+		/// </summary>
 		public string Source { get; set; }
 
+		/// <summary>
+		/// Type of the value
+		/// </summary>
 		public Type ValueType { get; set; }
 	}
 }
